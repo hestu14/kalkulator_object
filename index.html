@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Sederhana</title>
+</head>
+<body>
+    <h1>Kalkulator Sederhana</h1>
+
+    <form id="angka1">
+        Masukkan angka 1 :
+        <input type="text">
+        <br>
+    </form>
+
+    <br>
+
+    <form id="angka2">
+        Masukkan angka 2 :
+        <input type="text">
+        <br>
+    </form>
+
+    <br>
+    <button id="kali" onclick="new calc().kali()"> Kali x
+    </button>
+    <button id="bagi" onclick="new calc().bagi()"> Bagi :
+    </button>
+    <button id="tambah" onclick="new calc2().hasiltambah()"> Tambah +
+    </button>
+    <button id="kurang" onclick="new calc2().hasilkurang()"> Kurang -
+    </button>
+    <button id="modulus" onclick="calc3.modulus((Number(document.getElementById('angka1').elements[0].value)),(Number(document.getElementById('angka2').elements[0].value)))"> Modulus %
+    </button>
+    <button id="pangkat" onclick="calc3.pangkat((Number(document.getElementById('angka1').elements[0].value)),(Number(document.getElementById('angka2').elements[0].value)))"> Pangkat ^
+    </button>
+    
+    <b><p id="Hasil"> </p></b>
+
+    <script>
+    
+
+    //object literal
+    let calc3 = {
+            modulus: function (angka1,angka2) {
+                let hasil = angka1 % angka2;
+                document.getElementById("Hasil").innerHTML = angka1 + ' % ' + angka2 + ' = ' + hasil;
+                },
+                
+            pangkat: function (angka1,angka2) {
+                let hasil = (Math.pow(angka1,angka2));
+                document.getElementById("Hasil").innerHTML = angka1 + "<sup>" + angka2 + "</sup> = " + hasil;
+                }    
+                };
+
+
+
+    //object builder 
+    function calc(
+        angka1 = Number(document.getElementById("angka1").elements[0].value),
+        angka2 = Number(document.getElementById("angka2").elements[0].value)
+    ) 
+    
+    {
+
+    this.angka1 = angka1;
+    this.angka2 = angka2;
+
+    this.kali = function () {let hasil = (angka1*angka2);
+    document.getElementById("Hasil").innerHTML = angka1 + ' x ' + angka2 + ' = ' + hasil};
+    
+    this.bagi = function() {let hasil = (angka1/angka2);
+    document.getElementById("Hasil").innerHTML = angka1 + ' : ' + angka2 + ' = ' + hasil};
+
+    }
+
+    //class constructor
+    class calc2 {
+            constructor(
+
+        angka1 = Number(document.getElementById("angka1").elements[0].value),
+        angka2 = Number(document.getElementById("angka2").elements[0].value)) 
+        {
+        this.angka1 = angka1;
+        this.angka2 = angka2;
+        }
+
+    hasiltambah() {
+        let hasil = this.angka1 + this.angka2;
+        document.getElementById("Hasil").innerHTML = this.angka1 + ' + ' + this.angka2 + ' = ' + hasil};
+
+    hasilkurang() {
+        let hasil = this.angka1 - this.angka2;
+        document.getElementById("Hasil").innerHTML = this.angka1 + ' - ' + this.angka2 + ' = ' + hasil};
+    }
+
+
+
+    </script>
+
+
+</body>
+</html>
